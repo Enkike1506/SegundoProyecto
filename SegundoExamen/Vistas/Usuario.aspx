@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="height: 551px">
             <h2>USUARIOS REGISTRADOS</h2>
             <br />
             <asp:GridView ID="GridView1" runat="server"></asp:GridView>
@@ -30,10 +30,16 @@
             Teléfono:
             <asp:TextBox ID="tTelefono" runat="server"></asp:TextBox>
             <br />
+            <asp:CheckBox ID="MInactivos" runat="server" Text="Mostrar Inactivos" AutoPostBack="True"  />
+
+            <br />
+           
 
             <asp:Button ID="bAgregarUsuario" runat="server" Text="Agregar" OnClick="bAgregarUsuario_Click" />
             <asp:Button ID="bModificarUsuario" runat="server" Text="Modificar" OnClick="bModificarUsuario_Click" />
             <asp:Button ID="bBorrarUsuario" runat="server" Text="Borrar" OnClick="bBorrarUsuario_Click" />
+          <asp:Button ID="CamActividad" runat="server" OnClick="CamActividad_Click" Text="Activar" />
+
         </div>
     </form>
 </body>

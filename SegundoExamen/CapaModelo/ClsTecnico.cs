@@ -10,5 +10,6 @@ namespace SegundoExamen.CapaModelo
         public static int TecnicoID { get; set; }
         public static string Nombre { get; set; }
         public static string Especialidad { get; set; }
+        public static string Estado { get; set; }
     }
 }

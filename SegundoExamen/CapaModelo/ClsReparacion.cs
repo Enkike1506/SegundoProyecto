@@ -11,5 +11,6 @@ namespace SegundoExamen.CapaModelo
         public static int EquipoID { get; set; }
         public static string FechaSolicitud { get; set; }
         public static string Estado { get; set; }
+
     }
 }

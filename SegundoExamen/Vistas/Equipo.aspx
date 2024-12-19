@@ -30,10 +30,13 @@
             Código del usuario:
             <asp:TextBox ID="tCodigoUsuario" Type="number" runat="server"></asp:TextBox>
             <br />
+             <asp:CheckBox ID="MInactivos" runat="server" Text="Mostrar Inactivos" AutoPostBack="True"  />
 
+            <br />
             <asp:Button ID="bAgregarEquipo" runat="server" Text="Agregar" OnClick="bAgregarEquipo_Click" />
             <asp:Button ID="bModificarEquipo" runat="server" Text="Modificar" OnClick="bModificarEquipo_Click" />
             <asp:Button ID="bBorrarEquipo" runat="server" Text="Borrar" OnClick="bBorrarEquipo_Click" />
+            <asp:Button ID="CamActividad" runat="server" OnClick="CamActividad_Click" Text="Activar" />
         </div>
     </form>
 </body>

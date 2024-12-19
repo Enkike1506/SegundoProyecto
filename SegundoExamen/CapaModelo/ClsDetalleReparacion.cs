@@ -12,5 +12,6 @@ namespace SegundoExamen.CapaModelo
         public static string Descripcion { get; set; }
         public static string FechaInicio { get; set; }
         public static string FechaFin { get; set; }
+        public static string Estado { get; set; }
     }
 }

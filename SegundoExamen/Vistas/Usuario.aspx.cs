@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SegundoExamen.CapaLogica;
 using SegundoExamen.CapaModelo;
+using System.Collections;
 
 namespace SegundoExamen.Vistas
 {
@@ -28,25 +29,54 @@ namespace SegundoExamen.Vistas
 
         protected void LlenarGrid()
         {
-            string constr = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+
+            if (MInactivos.Checked)
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT *  FROM Usuarios"))
+               
+                string constr = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    using (SqlCommand cmd = new SqlCommand("SELECT *  FROM Usuarios"))
                     {
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-                        using (DataTable dt = new DataTable())
+                        using (SqlDataAdapter sda = new SqlDataAdapter())
                         {
-                            sda.Fill(dt);
-                            GridView1.DataSource = dt;
-                            GridView1.DataBind();
+                            cmd.Connection = con;
+                            sda.SelectCommand = cmd;
+                            using (DataTable dt = new DataTable())
+                            {
+                                sda.Fill(dt);
+                                GridView1.DataSource = dt;
+                                GridView1.DataBind();
+                            }
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                string constr = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SELECT *  FROM Usuarios where estado='Activo'"))
+                    {
+                        using (SqlDataAdapter sda = new SqlDataAdapter())
+                        {
+                            cmd.Connection = con;
+                            sda.SelectCommand = cmd;
+                            using (DataTable dt = new DataTable())
+                            {
+                                sda.Fill(dt);
+                                GridView1.DataSource = dt;
+                                GridView1.DataBind();
+                            }
                         }
                     }
                 }
             }
         }
+
+
 
         protected void bAgregarUsuario_Click(object sender, EventArgs e)
         {
@@ -94,5 +124,37 @@ namespace SegundoExamen.Vistas
                 MostrarAlerta(this, "Error al eliminar al usuario");
             }
         }
+
+        protected void M_Click(object sender, EventArgs e)
+        {
+            LlenarGrid();
+        }
+
+
+        protected void CamActividad_Click(object sender, EventArgs e)
+        {
+
+            ClsUsuario.UsuarioID = int.Parse(tCodigoUsuario.Text);
+
+            if (Usuarios.ModificarEstado(ClsUsuario.UsuarioID, "Activo") > 0)
+            {
+                MostrarAlerta(this, "Estado cambiado");
+                LlenarGrid();
+            }
+            else
+            {
+                MostrarAlerta(this, "Error al cambiar estado");
+            }
+        }
+
+       
+
+
+
+
+
+
+        
     }
 }
+    

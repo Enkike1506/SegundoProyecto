@@ -78,11 +78,40 @@ namespace SegundoExamen.CapaLogica
             {
                 using (Conn = DBconn.obtenerConexion())
                 {
-                    SqlCommand cmd = new SqlCommand("BorrarDetallesReparacion", Conn)
+                    SqlCommand cmd = new SqlCommand("BorrarTecnicos", Conn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
                     cmd.Parameters.Add(new SqlParameter("@id", codigo));
+
+                    retorno = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                retorno = -1;
+            }
+            finally
+            {
+                Conn.Close();
+            }
+
+            return retorno;
+        }
+        public static int ModificarEstado(int codigo, string estado)
+        {
+            int retorno = 0;
+            SqlConnection Conn = new SqlConnection();
+            try
+            {
+                using (Conn = DBconn.obtenerConexion())
+                {
+                    SqlCommand cmd = new SqlCommand("ModificarEstadoTecnicos", Conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.Add(new SqlParameter("@id", codigo));
+                    cmd.Parameters.Add(new SqlParameter("@estado", estado));
 
                     retorno = cmd.ExecuteNonQuery();
                 }

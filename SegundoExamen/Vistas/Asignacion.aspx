@@ -27,13 +27,16 @@
             <asp:TextBox ID="tCodigoTecnico" Type="number" runat="server"></asp:TextBox>
             <br />
 
-            Código del técnico:
+            Fecha de la asignación:
             <asp:TextBox ID="tFechaAsignacion" Type="date" runat="server"></asp:TextBox>
             <br />
+             <asp:CheckBox ID="MInactivos" runat="server" Text="Mostrar Inactivos" AutoPostBack="True"  />
 
+             <br />
             <asp:Button ID="bAgregarAsignacion" runat="server" Text="Agregar" OnClick="bAgregarAsignacion_Click" />
             <asp:Button ID="bModificarAsigncion" runat="server" Text="Modificar" OnClick="bModificarAsignacion_Click" />
             <asp:Button ID="bBorrarAsignacion" runat="server" Text="Borrar" OnClick="bBorrarAsignacion_Click" />
+            <asp:Button ID="CamActividad" runat="server" OnClick="CamActividad_Click" Text="Activar" />
         </div>
     </form>
 </body>

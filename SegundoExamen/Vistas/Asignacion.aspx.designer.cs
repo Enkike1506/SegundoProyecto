@@ -69,6 +69,15 @@ namespace SegundoExamen.Vistas
         protected global::System.Web.UI.WebControls.TextBox tFechaAsignacion;
 
         /// <summary>
+        /// Control MInactivos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox MInactivos;
+
+        /// <summary>
         /// Control bAgregarAsignacion.
         /// </summary>
         /// <remarks>
@@ -94,5 +103,14 @@ namespace SegundoExamen.Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bBorrarAsignacion;
+
+        /// <summary>
+        /// Control CamActividad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CamActividad;
     }
 }

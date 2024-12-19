@@ -26,10 +26,13 @@
             Especialidad:
             <asp:TextBox ID="tEspecialidad" runat="server"></asp:TextBox>
             <br />
+             <asp:CheckBox ID="MInactivos" runat="server" Text="Mostrar Inactivos" AutoPostBack="True"  />
 
+            <br />
             <asp:Button ID="bAgregarTecnico" runat="server" Text="Agregar" OnClick="bAgregarTecnico_Click" />
             <asp:Button ID="bModificarTecnico" runat="server" Text="Modificar" OnClick="bModificarTecnico_Click" />
             <asp:Button ID="bBorrarTecnico" runat="server" Text="Borrar" OnClick="bBorrarTecnico_Click" />
+            <asp:Button ID="CamActividad" runat="server" OnClick="CamActividad_Click" Text="Activar" />
         </div>
     </form>
 </body>

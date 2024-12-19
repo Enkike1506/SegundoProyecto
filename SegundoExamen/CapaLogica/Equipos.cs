@@ -100,5 +100,34 @@ namespace SegundoExamen.CapaLogica
 
             return retorno;
         }
+        public static int ModificarEstado(int codigo, string estado)
+        {
+            int retorno = 0;
+            SqlConnection Conn = new SqlConnection();
+            try
+            {
+                using (Conn = DBconn.obtenerConexion())
+                {
+                    SqlCommand cmd = new SqlCommand("ModificarEstadoEquipo", Conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.Add(new SqlParameter("@id", codigo));
+                    cmd.Parameters.Add(new SqlParameter("@estado", estado));
+
+                    retorno = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                retorno = -1;
+            }
+            finally
+            {
+                Conn.Close();
+            }
+
+            return retorno;
+        }
     }
 }

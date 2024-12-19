@@ -34,10 +34,13 @@
             Fecha de fin:
             <asp:TextBox ID="tFechaFin" Type="Date" runat="server"></asp:TextBox>
             <br />
+             <asp:CheckBox ID="MInactivos" runat="server" Text="Mostrar Inactivos" AutoPostBack="True"  />
 
+            <br />
             <asp:Button ID="bAgregarDetalle" runat="server" Text="Agregar" OnClick="bAgregarDetalle_Click" />
             <asp:Button ID="bModificarDetalle" runat="server" Text="Modificar" OnClick="bModificarDetalle_Click" />
             <asp:Button ID="bBorrarDetalle" runat="server" Text="Borrar" OnClick="bBorrarDetalle_Click" />
+            <asp:Button ID="CamActividad" runat="server" Text="Activar" OnClick="CamActividad_Click"  />
         </div>
     </form>
 </body>

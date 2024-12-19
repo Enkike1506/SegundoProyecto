@@ -30,10 +30,13 @@
             Estado:
             <asp:TextBox ID="tEstado" runat="server"></asp:TextBox>
             <br />
+             <asp:CheckBox ID="MInactivos" runat="server" Text="Mostrar Inactivos" AutoPostBack="True"  />
 
+            <br />
             <asp:Button ID="bAgregarReparacion" runat="server" Text="Agregar" OnClick="bAgregarReparacion_Click" />
             <asp:Button ID="bModificarReparacion" runat="server" Text="Modificar" OnClick="bModificarReparacion_Click" />
             <asp:Button ID="bBorrarReparacion" runat="server" Text="Borrar" OnClick="bBorrarReparacion_Click" />
+            <asp:Button ID="CamActividad" runat="server" OnClick="CamActividad_Click" Text="Activar" />
         </div>
     </form>
 </body>

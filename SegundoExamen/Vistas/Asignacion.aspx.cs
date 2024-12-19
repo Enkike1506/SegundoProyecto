@@ -27,26 +27,66 @@ namespace SegundoExamen.Vistas
 
         protected void LlenarGrid()
         {
-            string constr = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+            if (MInactivos.Checked)
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT *  FROM Asignaciones"))
+
+                string constr = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    using (SqlCommand cmd = new SqlCommand("SELECT *  FROM Asignaciones"))
                     {
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-                        using (DataTable dt = new DataTable())
+                        using (SqlDataAdapter sda = new SqlDataAdapter())
                         {
-                            sda.Fill(dt);
-                            GridView1.DataSource = dt;
-                            GridView1.DataBind();
+                            cmd.Connection = con;
+                            sda.SelectCommand = cmd;
+                            using (DataTable dt = new DataTable())
+                            {
+                                sda.Fill(dt);
+                                GridView1.DataSource = dt;
+                                GridView1.DataBind();
+                            }
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                string constr = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SELECT *  FROM Asignaciones where estado='Activo'"))
+                    {
+                        using (SqlDataAdapter sda = new SqlDataAdapter())
+                        {
+                            cmd.Connection = con;
+                            sda.SelectCommand = cmd;
+                            using (DataTable dt = new DataTable())
+                            {
+                                sda.Fill(dt);
+                                GridView1.DataSource = dt;
+                                GridView1.DataBind();
+                            }
                         }
                     }
                 }
             }
         }
+        protected void CamActividad_Click(object sender, EventArgs e)
+        {
 
+            ClsAsignacion.AsignacionID = int.Parse(tCodigoAsingnacion.Text);
+
+            if (Asignaciones.ModificarEstado(ClsAsignacion.AsignacionID, "Activo") > 0)
+            {
+                MostrarAlerta(this, "Estado cambiado");
+                LlenarGrid();
+            }
+            else
+            {
+                MostrarAlerta(this, "Error al cambiar estado");
+            }
+        }
         protected void bAgregarAsignacion_Click(object sender, EventArgs e)
         {
             ClsAsignacion.RepracionID = int.Parse(tCodigoReparacion.Text);
